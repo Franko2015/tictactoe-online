@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tres en raya</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Lobby -->
+  <main id="lobby" class="card lobby">
+    <div class="logo"><span class="x">✕</span><span class="o">○</span></div>
+    <h1>Tres en raya</h1>
+    <p class="muted">Crea una sala o únete con un código</p>
+
+    <input id="name" maxlength="20" placeholder="Nombre de tu equipo" autocomplete="off">
+    <button id="create" class="btn primary">Crear sala</button>
+
+    <div class="divider"><span>o</span></div>
+
+    <form id="joinForm" class="row">
+      <input id="code" maxlength="4" placeholder="CÓDIGO" autocomplete="off" class="code-input">
+      <button class="btn">Unirse</button>
+    </form>
+    <p id="error" class="error"></p>
+  </main>
+
+  <!-- Juego -->
+  <main id="game" class="layout hidden">
+    <section class="card play">
+      <header class="top">
+        <button id="copy" class="pill" title="Copiar código">Sala <b id="roomCode"></b></button>
+        <button id="leave" class="link">Salir</button>
+      </header>
+
+      <div class="teams">
+        <div class="team" data-mark="X">
+          <span class="mark x">✕</span>
+          <span class="tname" id="nameX"></span>
+          <span class="score" id="scoreX">0</span>
+        </div>
+        <div class="vs"><span id="draws">0</span><small>empates</small></div>
+        <div class="team" data-mark="O">
+          <span class="score" id="scoreO">0</span>
+          <span class="tname" id="nameO"></span>
+          <span class="mark o">○</span>
+        </div>
+      </div>
+
+      <div id="board" class="board"></div>
+      <p id="status" class="status"></p>
+      <button id="again" class="btn primary hidden">Revancha</button>
+    </section>
+
+    <section class="card chat">
+      <h2>Chat</h2>
+      <ul id="messages"></ul>
+      <form id="chatForm" class="row">
+        <input id="msg" maxlength="300" placeholder="Escribe un mensaje…" autocomplete="off">
+        <button class="btn primary send" aria-label="Enviar">➤</button>
+      </form>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
