@@ -14,6 +14,9 @@ async function api(action, body = {}) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ ...session, ...body }),
   });
+  if (!res.headers.get('content-type')?.includes('application/json')) {
+    throw new Error(`La API no está disponible en este dominio (HTTP ${res.status}). Despliega también el backend Node.js.`);
+  }
   const data = await res.json();
   if (!res.ok) throw new Error(data.error);
   return data;
